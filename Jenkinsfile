@@ -11,7 +11,7 @@ pipeline {
     }
 
     environment {
-        APP_NAME = 'usn-calculator'
+        APP_NAME = 'eng24cs0269-calculator'
     }
 
     stages {
