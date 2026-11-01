@@ -33,6 +33,13 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/*.tar.gz', fingerprint: true
             }
         }
+                stage('Docker image') {
+            steps {
+                sh 'docker build -t ${APP_NAME}:${BUILD_NUMBER} .'
+                sh 'docker run --rm ${APP_NAME}:${BUILD_NUMBER}'
+                sh 'docker images ${APP_NAME}'
+            }
+        }
         stage('Deploy to staging') {
             steps {
                 input message: 'Deploy to staging?', ok: 'Deploy'
