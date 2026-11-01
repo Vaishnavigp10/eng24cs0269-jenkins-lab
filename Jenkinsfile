@@ -33,7 +33,7 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/*.tar.gz', fingerprint: true
             }
         }
-                stage('Docker image') {
+        stage('Docker image') {
             steps {
                 sh 'docker build --network=host -t ${APP_NAME}:${BUILD_NUMBER} .'
                 sh 'docker run --rm ${APP_NAME}:${BUILD_NUMBER}'
