@@ -1,5 +1,6 @@
 FROM python:3.12-slim
 WORKDIR /app
+COPY vendor /opt/vendor
+ENV PYTHONPATH=/opt/vendor
 COPY calculator.py test_calculator.py ./
-RUN pip install --no-cache-dir pytest
 CMD ["python", "-m", "pytest", "-v"]
