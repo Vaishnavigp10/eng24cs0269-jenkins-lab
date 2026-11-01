@@ -1,5 +1,6 @@
-FROM python:3.12-slim
+FROM ubuntu:24.04
 WORKDIR /app
 COPY calculator.py test_calculator.py ./
-RUN pip install --no-cache-dir pytest
-CMD ["python", "-m", "pytest", "-v"]
+RUN apt-get update && apt-get install -y --no-install-recommends python3-pytest \
+    && rm -rf /var/lib/apt/lists/*
+CMD ["python3", "-m", "pytest", "-v"]
